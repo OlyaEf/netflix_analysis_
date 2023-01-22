@@ -26,9 +26,9 @@ def get_rating_query(rating):
             cursor.execute(query)
             for data in cursor.fetchall():
                 result = {
-                    "title": data[0],
-                    "rating": data[1],
-                    "description": data[2],
+                    "title": data[0].strip("\n"),
+                    "rating": data[1].strip("\n"),
+                    "description": data[2].strip("\n"),
                 }
                 results.append(result)
         except IndexError:
