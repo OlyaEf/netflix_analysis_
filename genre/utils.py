@@ -2,6 +2,12 @@ import sqlite3
 
 
 def get_genre(genre):
+    """
+    Функция, которая получает название жанра
+    в качестве аргумента и возвращает 10 самых свежих фильмов в формате json.
+    :param genre: жанр фильма.
+    :return: возвращает 10 самых свежих фильмов в формате json.
+    """
     with sqlite3.connect('./netflix.db') as connection:
         cursor = connection.cursor()
         # Фильтрация по результатам агрегации и группировки.

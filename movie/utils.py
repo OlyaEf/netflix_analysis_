@@ -2,6 +2,18 @@ import sqlite3
 
 
 def get_movie_title(word):
+    """
+    Функция, которая принимает title и возвращает данные в формате словаря.
+    :param word: название фильма.
+    :return: {
+		"title": "title",
+		"country": "country",
+		"release_year": 2021,
+		"genre": "listed_in",
+		"description": "description"
+    }
+    """
+    # SQL запрос.
     with sqlite3.connect('./netflix.db') as connection:
         cursor = connection.cursor()
         # Фильтрация по результатам агрегации и группировки.
@@ -29,6 +41,18 @@ def get_movie_title(word):
 
 
 def get_movie_year(from_year, to_year):
+    """
+    Функция поиска по диапазону лет выпуска фильма.
+    :param from_year: первый год.
+    :param to_year: второй год.
+    :return: [
+	{"title":"title",
+	 "release_year": 2021},
+	{"title":"title",
+	 "release_year": 2020}
+    ]
+    """
+    # SQL запрос.
     with sqlite3.connect('./netflix.db') as connection:
         cursor = connection.cursor()
         # Фильтрация по результатам агрегации и группировки.
@@ -48,7 +72,3 @@ def get_movie_year(from_year, to_year):
             }
             results.append(result)
         return results
-
-
-# print(get_movie_title(21))
-# print(get_movie_year('2015', '2020'))

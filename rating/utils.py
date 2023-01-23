@@ -2,6 +2,11 @@ import sqlite3
 
 
 def get_rating(group):
+    """
+    Функция поиска по рейтингу.
+    :param group: children, family, adult.
+    :return: рейтинг.
+    """
     if group.lower() == 'children':
         return 'G', 'G'
     elif group.lower() == 'family':
@@ -13,6 +18,13 @@ def get_rating(group):
 
 
 def get_rating_query(rating):
+    """
+    Функция, которая принимает список допустимых рейтингов и
+    возвращала данные в формате списка словарей.
+    :param rating: данные рейтинга (get_rating(group)).
+    :return: данные в формате списка словарей.
+    """
+    # SQL запрос.
     with sqlite3.connect('./netflix.db') as connection:
         cursor = connection.cursor()
         # Фильтрация по результатам агрегации и группировки.
